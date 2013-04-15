@@ -26,7 +26,8 @@
         xmlns="http://www.w3.org/1999/xhtml"
         exclude-result-prefixes="i18n dri mets xlink xsl dim xhtml mods dc">
 
-    <xsl:import href="../dri2xhtml.xsl"/>
+    <xsl:import href="../dri2xhtml-osu/dri2xhtml.xsl"/>
+
     <xsl:output indent="yes"/>
 
     <xsl:template name="itemSummaryView-DIM">
