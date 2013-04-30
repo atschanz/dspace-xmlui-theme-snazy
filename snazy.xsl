@@ -162,7 +162,7 @@
 
         <!-- bds: this seemed as appropriate a place as any to throw in the blanket copyright notice -->
         <!--        see also match="dim:dim" mode="itemDetailView-DIM"  -->
-        <p class="copyright-text">Items in Knowledge Bank are protected by copyright, with all rights reserved, unless otherwise indicated.</p>
+        <p class="copyright-text">Items in MOspace are protected by copyright, with all rights reserved, unless otherwise indicated.</p>
     </xsl:template>
 
 
@@ -403,7 +403,7 @@
 
         <!-- bds: this seemed as appropriate a place as any to throw in the blanket copyright notice -->
         <!--        see also match="dim:dim" mode="itemDetailView-DIM"  -->
-        <p class="copyright-text">Items in Knowledge Bank are protected by copyright, with all rights reserved, unless otherwise indicated.</p>
+        <p class="copyright-text">Items in MOspace are protected by copyright, with all rights reserved, unless otherwise indicated.</p>
     </xsl:template>
 
 </xsl:stylesheet>
