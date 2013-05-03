@@ -318,17 +318,6 @@
                             <param value="https://library.osu.edu/assets/inc/player.swf" name="src" />
                         </object>
                     </xsl:when>
-                    <xsl:when test="$mview='googledocsviewer'">
-                        <iframe class="googledocsviewer">
-                            <xsl:attribute name="src">
-                                <xsl:text>http://docs.google.com/viewer?url=</xsl:text>
-                                <!--<xsl:text>http://labs.google.com/papers/bigtable-osdi06.pdf</xsl:text>-->
-                                <xsl:value-of select="$baseurl" />
-                                <xsl:value-of select="mets:FLocat[@LOCTYPE='URL']/@xlink:href" />
-                                <xsl:text>&#38;embedded=true</xsl:text>
-                            </xsl:attribute>
-                        </iframe>
-                    </xsl:when>
                     <xsl:when test="$mview='embedwithfallback'">
                         <object class="embedwithfallback">
                             <xsl:attribute name="data">
