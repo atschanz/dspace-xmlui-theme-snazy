@@ -191,7 +191,6 @@
         <xsl:variable name="googleplayer" select="'audio/mpeg audio/basic audio/x-wav'" />
         <xsl:variable name="html5video" select="'video/webm'" />
         <xsl:variable name="flashvideo" select="'video/mp4'" />
-        <xsl:variable name="googledocsviewer" select="'application/jsjsjsj'" />
         <xsl:variable name="embedwithfallback" select="'application/x-pdf application/pdf'" />
         <xsl:variable name="mview">
             <xsl:choose>
@@ -204,10 +203,7 @@
                 <xsl:when test="contains($flashvideo, @MIMETYPE)">
                     <xsl:text>flashvideo</xsl:text>
                 </xsl:when>
-                <xsl:when test="contains($googledocsviewer, @MIMETYPE)">
-                    <xsl:text>googledocsviewer</xsl:text>
-                </xsl:when>
-                <xsl:when test="contains($embedwithfallback, @MIMETYPE)">
+               <xsl:when test="contains($embedwithfallback, @MIMETYPE)">
                     <xsl:text>embedwithfallback</xsl:text>
                 </xsl:when>
                 <xsl:otherwise>
