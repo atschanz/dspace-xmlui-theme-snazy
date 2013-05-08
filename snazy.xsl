@@ -191,7 +191,8 @@
         <xsl:variable name="googleplayer" select="'audio/mpeg audio/basic audio/x-wav'" />
         <xsl:variable name="html5video" select="'video/webm'" />
         <xsl:variable name="flashvideo" select="'video/mp4'" />
-        <xsl:variable name="embedwithfallback" select="'application/x-pdf application/pdf'" />
+<!--        <xsl:variable name="embedwithfallback" select="'application/x-pdf application/pdf'" /> -->
+        <xsl:variable name="pdfjs" select="'application/x-pdf application/pdf'" />
         <xsl:variable name="mview">
             <xsl:choose>
                 <xsl:when test="contains($googleplayer, @MIMETYPE)">
@@ -205,6 +206,9 @@
                 </xsl:when>
                <xsl:when test="contains($embedwithfallback, @MIMETYPE)">
                     <xsl:text>embedwithfallback</xsl:text>
+                </xsl:when>
+                <xsl:when test="contains($pdfjs, @MIMETYPE)">
+                    <xsl:text>pdfjs</xsl:text>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:text>default</xsl:text>
@@ -330,6 +334,23 @@
                             </a>
                         </object>
                     </xsl:when>
+                    <xsl:when test="$mview='pdfjs'">
+					<script>
+						Ext.onReady(function(){
+							Ext.tip.QuickTipManager.init();
+							
+							Ext.create('Ext.ux.panel.PDF', {
+								title    : 'PDF Panel',
+								width    : 489,
+								height   : 633,
+								pageScale: 0.75, 
+								src      : <xsl:value-of select="mets:FLocat[@LOCTYPE='URL']/@xlink:href"/>
+								renderTo : Ext.getBody()
+							});
+						});
+					</script>
+
+                   </xsl:when>
                     <xsl:otherwise>
                         <a>
                             <xsl:attribute name="href">
