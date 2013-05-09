@@ -188,19 +188,27 @@
     </xsl:template>
 
     <xsl:template match="mets:file">
-        <xsl:variable name="googleplayer" select="'audio/mpeg audio/basic audio/x-wav'" />
+        <!--<xsl:variable name="googleplayer" select="'audio/mpeg audio/basic audio/x-wav application/octet-stream'" /> -->
+        <xsl:variable name="html5audio" select="'audio/mpeg audio/basic audio/x-wav application/octet-stream'" />
         <xsl:variable name="html5video" select="'video/webm'" />
+        <xsl:variable name="flashaudio" select="'audio/mpeg audio/basic audio/x-wav application/octet-stream'" />
         <xsl:variable name="flashvideo" select="'video/mp4'" />
         <xsl:variable name="embedwithfallback" select="'application/x-pdf application/pdf'" />
         <xsl:variable name="mview">
             <xsl:choose>
-                <xsl:when test="contains($googleplayer, @MIMETYPE)">
+<!--                <xsl:when test="contains($googleplayer, @MIMETYPE)">
                     <xsl:text>googleplayer</xsl:text>
-                </xsl:when>
+                </xsl:when> -->
+<!--                <xsl:when test="contains($html5audio, @MIMETYPE)">
+                    <xsl:text>html5audio</xsl:text>
+                </xsl:when>-->
                 <xsl:when test="contains($html5video, @MIMETYPE)">
                     <xsl:text>html5video</xsl:text>
                 </xsl:when>
-                <xsl:when test="contains($flashvideo, @MIMETYPE)">
+                <xsl:when test="contains($flashaudio, @MIMETYPE)">
+                    <xsl:text>flashaudio</xsl:text>
+                </xsl:when>
+                 <xsl:when test="contains($flashvideo, @MIMETYPE)">
                     <xsl:text>flashvideo</xsl:text>
                 </xsl:when>
                <xsl:when test="contains($embedwithfallback, @MIMETYPE)">
@@ -275,6 +283,36 @@
             <div class="file-view">
               <div class="file-view-container">
                 <xsl:choose>
+					<xsl:when test="$mview='html5audio'">
+                        <audio id="html5audio" controls="controls">
+                            <xsl:attribute name="src">
+                                <xsl:value-of select="mets:FLocat[@LOCTYPE='URL']/@xlink:href" />
+                            </xsl:attribute>
+                            <a>
+                                <xsl:attribute name="href">
+                                    <xsl:value-of select="mets:FLocat[@LOCTYPE='URL']/@xlink:href"/>
+                                </xsl:attribute>
+                                <i18n:text>xmlui.dri2xhtml.METS-1.0.item-files-viewOpen</i18n:text>
+                            </a>
+						</audio>
+					</xsl:when>
+
+                    <xsl:when test="$mview='flashaudio'">
+                        <object class="flashaudio" type="application/x-shockwave-flash" data="https://library.osu.edu/assets/inc/player.swf">
+                            <param value="player" name="name" />
+                            <param value="false" name="allowfullscreen" />
+                            <param value="always" name="allowscriptaccess" />
+                            <param name="flashvars">
+                                <xsl:attribute name="value">
+                                    <xsl:text>file=</xsl:text>
+                                    <xsl:value-of select="$baseurl"/>
+                                    <xsl:value-of select="mets:FLocat[@LOCTYPE='URL']/@xlink:href"/>
+                                </xsl:attribute>
+                            </param>
+                            <param value="https://library.osu.edu/assets/inc/player.swf" name="src" />
+                        </object>
+                    </xsl:when>
+
                     <xsl:when test="$mview='googleplayer'">
                         <embed class="googleplayer" type="application/x-shockwave-flash" wmode="transparent" height="27" width="320">
                             <xsl:attribute name="src">
