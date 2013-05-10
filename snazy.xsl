@@ -385,6 +385,8 @@
     <!-- Generate the info about the item from the metadata section -->
     <xsl:template match="dim:dim" mode="itemSummaryView-DIM">
 
+<!-- 
+ TODO: add logic to work with multiple possible embed alternatives, not just JWplayer AND also, if there is already a local copy, don't bother with this at all ... but it's a big project 
         <xsl:choose>
             <xsl:when test="count(dim:field[@element='source'][@qualifier='uri']) &gt; 0">
                 <h3>Embed Source.URI Media</h3>
@@ -408,7 +410,7 @@
                 </xsl:for-each>
             </xsl:when>
         </xsl:choose>
-
+-->
         <table class="ds-includeSet-table">
             <xsl:call-template name="itemSummaryView-DIM-fields">
             </xsl:call-template>
