@@ -298,9 +298,9 @@
 					</xsl:when>
 
                     <xsl:when test="$mview='flashaudio'">
-                        <object class="flashaudio" type="application/x-shockwave-flash" data="https://library.osu.edu/assets/inc/player.swf">
+                        <object class="flashaudio" type="application/x-shockwave-flash" data="https://mospace.umsystem.edu/assets/inc/player.swf">
                             <param value="player" name="name" />
-                            <param value="false" name="allowfullscreen" />
+                            <param value="true" name="allowfullscreen" />
                             <param value="always" name="allowscriptaccess" />
                             <param name="flashvars">
                                 <xsl:attribute name="value">
@@ -309,7 +309,7 @@
                                     <xsl:value-of select="mets:FLocat[@LOCTYPE='URL']/@xlink:href"/>
                                 </xsl:attribute>
                             </param>
-                            <param value="https://library.osu.edu/assets/inc/player.swf" name="src" />
+                            <param value="https://mospace.umsystem.edu/assets/inc/player.swf" name="src" />
                         </object>
                     </xsl:when>
 
@@ -338,9 +338,10 @@
                         </video>
                     </xsl:when>
                     <xsl:when test="$mview='flashvideo'">
-                        <object class="flashvideo" type="application/x-shockwave-flash" data="https://library.osu.edu/assets/inc/player.swf">
+                        <object class="flashvideo" type="application/x-shockwave-flash" data="https://mospace.umsystem.edu/assets/inc/player.swf">
                             <param value="player" name="name" />
                             <param value="true" name="allowfullscreen" />
+                            <param value="true" name="fullscreen" />
                             <param value="always" name="allowscriptaccess" />
                             <param name="flashvars">
                                 <xsl:attribute name="value">
@@ -349,7 +350,7 @@
                                     <xsl:value-of select="mets:FLocat[@LOCTYPE='URL']/@xlink:href"/>
                                 </xsl:attribute>
                             </param>
-                            <param value="https://library.osu.edu/assets/inc/player.swf" name="src" />
+                            <param value="https://mospace.umsystem.edu/assets/inc/player.swf" name="src" />
                         </object>
                     </xsl:when>
                     <xsl:when test="$mview='embedwithfallback'">

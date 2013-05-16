@@ -12,10 +12,11 @@
                 var videoUrl = video.find('source').attr('src');
 
                 var flashUrl = ($(location).attr("protocol") == "http:") ? "http://" : "https://";
-                flashUrl = flashUrl + "library.osu.edu/resources/jwplayer/jwplayer_5.10.swf";
+                flashUrl = flashUrl + "mospace.umsystem.edu/assets/jwplayer/jwplayer_5.10.swf";
 
                 var flash = '<object type="application/x-shockwave-flash" data="' + flashUrl + '" width="' + video.width() + '" height="' + video.height() + '">' +
                     '		<param name="allowfullscreen" value="true" /> ' +
+                    '		<param name="fullscreen" value="true" /> ' +
                     '       <param name="flashvars" value="file=' + videoUrl + '&amp;type=video"/> ' +
                     '</object>';
 
@@ -32,7 +33,7 @@
                 var audioUrl = audio.find('source').attr('src');
 
                 var flashUrl = ($(location).attr("protocol") == "http:") ? "http://" : "https://";
-                flashUrl = flashUrl + "library.osu.edu/resources/jwplayer/jwplayer_5.10.swf";
+                flashUrl = flashUrl + "mospace.umsystem.edu/assets/jwplayer/jwplayer_5.10.swf";
 
                 var flashEmbed = '<embed type="application/x-shockwave-flash" src="'+flashUrl+'" width="470" height="24" flashvars="file='+audioUrl+'">';
 
